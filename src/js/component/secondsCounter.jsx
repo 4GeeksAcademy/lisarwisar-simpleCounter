@@ -3,34 +3,24 @@ import React, { useEffect, useState } from "react";
 let seconds = 0;
 
 function SecondsCounter () {
-    const [secondOnes, setSecondOnes] = useState(0);
-    const [secondTens, setSecondTens] = useState(0);
-    const [secondHundreds, setSecondHundreds] = useState(0);
-    const [secondOneThousands, setSecondOneThousands] = useState(0);
-    const [secondTenThousands, setSecondTenThousands] = useState(0);
-    const [secondHundredThousands, setSecondHundredThousands] = useState(0);
+    const [timePassed, setTimePassed] = useState(0);
 
     useEffect(() => {
         setInterval(() => {
-            setSecondOnes(separateByOrderOfMagnitude(seconds)[0] ? separateByOrderOfMagnitude(seconds)[0] : 0);
-            setSecondTens(separateByOrderOfMagnitude(seconds)[1] ? separateByOrderOfMagnitude(seconds)[1] : 0);
-            setSecondHundreds(separateByOrderOfMagnitude(seconds)[2] ? separateByOrderOfMagnitude(seconds)[2] : 0);
-            setSecondOneThousands(separateByOrderOfMagnitude(seconds)[3] ? separateByOrderOfMagnitude(seconds)[3] : 0);
-            setSecondTenThousands(separateByOrderOfMagnitude(seconds)[4] ? separateByOrderOfMagnitude(seconds)[4] : 0);
-            setSecondHundredThousands(separateByOrderOfMagnitude(seconds)[5] ? separateByOrderOfMagnitude(seconds)[5] : 0);
+            setTimePassed(separateByOrderOfMagnitude(seconds));
             seconds = seconds + 1;
         }, 1000);
       }, []);
 
     return(  
         <div className="container d-flex bg-black justify-content-center">
-            <div className="clockImage m-3 bg-dark  text-white rounded"><i className="fa-solid fa-clock"></i></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondHundredThousands.toString()}</b></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondTenThousands.toString()}</b></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondOneThousands.toString()}</b></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondHundreds.toString()}</b></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondTens.toString()}</b></div>
-            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{secondOnes.toString()}</b></div>
+            <div className="clockImage m-3 bg-dark  text-white rounded justify-content-center d-flex p-2"><i className="fas fa-clock fa-5x"></i></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[5] ? timePassed[5] : 0}</b></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[4] ? timePassed[4] : 0}</b></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[3] ? timePassed[3] : 0}</b></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[2] ? timePassed[2] : 0}</b></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[1] ? timePassed[1] : 0}</b></div>
+            <div className="numberDisplay m-3 bg-dark text-white text-center display-1 rounded"><b>{timePassed[0] ? timePassed[0] : 0}</b></div>
         </div>
     );
 }
